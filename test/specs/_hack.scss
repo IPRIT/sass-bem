@@ -1,0 +1,51 @@
+@include describe("The _hack function") {
+
+    $_bem-current-context: () !global;
+
+    @include it("should generate a hack selector for the current block") {
+        @include block('block', 'object') {
+            @include should( expect( #{_hack()} ), to( be( '._o-block' )));
+        }
+    }
+
+
+    $_bem-current-context: () !global;
+
+    @include it("should generate a hack selector for multiple selectors") {
+        @include block('block', 'object') {
+            @include element('element1', 'element2') {
+                @include should( expect( #{_hack()} ), to( be( '._o-block__element1, ._o-block__element2' )));
+            }
+        }
+    }
+
+
+    $_bem-current-context: () !global;
+
+    @include it("should generate a hack selector for the element of a modified block") {
+        @include block('block', 'object') {
+            @include element('element');
+            @include modifier('modifier') {
+                @include modifies-element('element') {
+                    @include should( expect( #{_hack()} ), to( be( '.o-block--modifier ._o-block__element' )));
+                }
+            }
+        }
+    }
+
+
+    $_bem-current-context: () !global;
+
+    @include it("should generate a hack selectors for multiple elements of a modified block") {
+        @include block('block', 'object') {
+            @include element('element1');
+            @include element('element2');
+            @include modifier('modifier') {
+                @include modifies-element('element1', 'element2') {
+                    @include should( expect( #{_hack()} ), to( be( '.o-block--modifier ._o-block__element1, .o-block--modifier ._o-block__element2' )));
+                }
+            }
+        }
+    }
+
+}

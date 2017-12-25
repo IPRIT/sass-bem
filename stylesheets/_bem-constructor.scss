@@ -1,0 +1,19 @@
+// -----------------------------------------------------------------------------
+// BEM constructor
+// -----------------------------------------------------------------------------
+
+
+@import 'defaults';
+@import 'logger';
+@import 'error-checks';
+@import 'block';
+@import 'element';
+@import 'modifier';
+@import 'modifies-element';
+@import 'modifies-modifier';
+@import 'scope';
+@import 'theme';
+@import 'state';
+@import 'hack';
+@import 'suffix';
+@import 'debug';

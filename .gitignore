@@ -1,0 +1,5 @@
+Gemfile.lock
+*.gem
+test/.sass-cache
+node_modules
+tmp
