@@ -1,0 +1,18 @@
+// ----------------------------------------------------------------------
+// Get modifier
+// ----------------------------------------------------------------------
+
+@function get-modifier($element-name: false, $modifier-name: false) {
+
+  @if not $element-name {
+    $element-name: get-element();
+  }
+
+  @if not $modifier-name {
+    $modifier-name: map_get(map-get($_bem-current-context, 'modifier'), 'selector');
+  }
+
+  $block: get-block();
+
+  @return $block + $bem-element-separator + $element-name + $bem-modifier-separator + $modifier-name;
+}

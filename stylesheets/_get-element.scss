@@ -1,0 +1,14 @@
+// ----------------------------------------------------------------------
+// Get element
+// ----------------------------------------------------------------------
+
+@function get-element($element-name: false) {
+
+  @if not $element-name {
+    @return map_get(map-get($_bem-current-context, 'element'), 'selector');
+  }
+
+  $block: get-block();
+
+  @return $block + $bem-element-separator + $element-name;
+}

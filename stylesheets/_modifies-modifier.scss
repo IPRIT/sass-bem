@@ -1,4 +1,3 @@
-
 // ----------------------------------------------------------------------
 // Modifies modifier
 // ----------------------------------------------------------------------
@@ -24,9 +23,6 @@
     $element: map-get(map-get($_bem-current-context, 'block'), 'selector') + $bem-modifier-separator + $element;
     $selectors: append($selectors, unquote($element), 'comma');
   }
-
-  $s: &; // Workaround for libsass
-  $block: selector-append($s...);
 
   $modifier: map-get(map-get($_bem-current-context, 'modifier'), 'selector');
   $selector: selector_append($modifier, $selectors);

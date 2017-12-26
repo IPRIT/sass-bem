@@ -1,19 +1,19 @@
 {
   "name": "sass-bem",
-  "author": "Daniel Guillan <daniel.guillan@gmail.com> (http://danielguillan.com/)",
-  "version": "1.1.2",
+  "author": "Alex Belov <asb@rdw.ru>",
+  "version": "1.0.0",
   "scripts": {
     "test": "grunt test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/IPRIT/bem-constructor"
+    "url": "https://github.com/IPRIT/sass-bem"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IPRIT/bem-constructor/issues"
+    "url": "https://github.com/IPRIT/sass-bem/issues"
   },
-  "homepage": "https://github.com/IPRIT/bem-constructor",
+  "homepage": "https://github.com/IPRIT/sass-bem",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-sass": "^0.8.1",
