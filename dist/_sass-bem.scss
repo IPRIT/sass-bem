@@ -673,19 +673,28 @@ $bem-block-namespaces: (
 // Get modifier
 // ----------------------------------------------------------------------
 
-@function get-modifier($element-name: false, $modifier-name: false) {
-
-  @if not $element-name {
-    $element-name: map_get(map-get($_bem-current-context, 'element'), 'name');
-  }
+@function get-modifier($modifier-name: false, $element-name: false) {
 
   @if not $modifier-name {
     @return map_get(map-get($_bem-current-context, 'modifier'), 'selector');
+  } @else if (not $element-name) {
+    @return map_get(map-get($_bem-current-context, 'element'), 'selector') + $bem-modifier-separator + $modifier-name;
+  } @else {
+    $block: get-block();
+    @return $block + $bem-element-separator + $element-name + $bem-modifier-separator + $modifier-name;
   }
+}
+// ----------------------------------------------------------------------
+// Get block modifier
+// ----------------------------------------------------------------------
 
-  $block: get-block();
-
-  @return $block + $bem-element-separator + $element-name + $bem-modifier-separator + $modifier-name;
+@function get-block-modifier($modifier-name: false) {
+  @if not $modifier-name {
+    @return map_get(map-get($_bem-current-context, 'modifier'), 'selector');
+  } @else {
+    $block: get-block();
+    @return $block + $bem-modifier-separator + $modifier-name;
+  }
 }
 // -----------------------------------------------------------------------------
 // Scope constructor

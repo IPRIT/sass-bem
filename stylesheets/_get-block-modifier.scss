@@ -1,0 +1,12 @@
+// ----------------------------------------------------------------------
+// Get block modifier
+// ----------------------------------------------------------------------
+
+@function get-block-modifier($modifier-name: false) {
+  @if not $modifier-name {
+    @return map_get(map-get($_bem-current-context, 'modifier'), 'selector');
+  } @else {
+    $block: get-block();
+    @return $block + $bem-modifier-separator + $modifier-name;
+  }
+}

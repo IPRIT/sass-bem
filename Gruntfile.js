@@ -40,6 +40,7 @@ module.exports = function(grunt) {
                     '<%= dir.src %>/_get-block.scss',
                     '<%= dir.src %>/_get-element.scss',
                     '<%= dir.src %>/_get-modifier.scss',
+                    '<%= dir.src %>/_get-block-modifier.scss',
                     '<%= dir.src %>/_scope.scss',
                     '<%= dir.src %>/_theme.scss',
                     '<%= dir.src %>/_state.scss',
