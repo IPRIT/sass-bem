@@ -676,11 +676,11 @@ $bem-block-namespaces: (
 @function get-modifier($element-name: false, $modifier-name: false) {
 
   @if not $element-name {
-    $element-name: get-element();
+    $element-name: map_get(map-get($_bem-current-context, 'element'), 'name');
   }
 
   @if not $modifier-name {
-    $modifier-name: map_get(map-get($_bem-current-context, 'modifier'), 'selector');
+    @return map_get(map-get($_bem-current-context, 'modifier'), 'selector');
   }
 
   $block: get-block();
