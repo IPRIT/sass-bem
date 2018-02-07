@@ -87,7 +87,7 @@
         $updated-elements: map-merge(map-get($current-block, 'elements'), $updated-item);
         $updated-block: (#{$current-block-name}: ('modifiers': map-get($current-block, 'modifiers'), 'elements': $updated-elements));
     } @else {
-        $updated-block: (#{$current-block-name}: ('modifiers': ($current-item-modifiers), 'elements': map-get($current-block, 'elements')));;
+        $updated-block: (#{$current-block-name}: ('modifiers': ($current-item-modifiers), 'elements': map-get($current-block, 'elements')));
     }
 
     // // Update the log

@@ -1,4 +1,4 @@
-/*! sass-bem - version : 1.0.0 - 2017-12-26 */
+// sass-bem - version : 1.3.0 - 2018-02-07
 // -----------------------------------------------------------------------------
 // Defaults
 // -----------------------------------------------------------------------------
@@ -254,7 +254,7 @@ $_bem-current-context: () !global;
         $updated-elements: map-merge(map-get($current-block, 'elements'), $updated-item);
         $updated-block: (#{$current-block-name}: ('modifiers': map-get($current-block, 'modifiers'), 'elements': $updated-elements));
     } @else {
-        $updated-block: (#{$current-block-name}: ('modifiers': ($current-item-modifiers), 'elements': map-get($current-block, 'elements')));;
+        $updated-block: (#{$current-block-name}: ('modifiers': ($current-item-modifiers), 'elements': map-get($current-block, 'elements')));
     }
 
     // // Update the log

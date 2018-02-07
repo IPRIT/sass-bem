@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 
         concat: {
             options: {
-                banner: '/*! <%= pkg.name %> - version : <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                banner: '// <%= pkg.name %> - version : <%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n'
             },
 
             dist: {
