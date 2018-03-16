@@ -1,4 +1,4 @@
-# BEM Constructor [![Build Status](https://travis-ci.org/IPRIT/sass-bem.svg?branch=master)](https://travis-ci.org/IPRIT/sass-bem) [![npm version](https://badge.fury.io/js/sass-bem.svg)](https://badge.fury.io/js/sass-bem) [![Bower version](https://badge.fury.io/bo/sass-bem.svg)](http://badge.fury.io/bo/sass-bem) [![Gem Version](https://badge.fury.io/rb/sass-bem.svg)](http://badge.fury.io/rb/sass-bem)
+# Sass Bem Utils [![npm version](https://badge.fury.io/js/sass-bem.svg)](https://badge.fury.io/js/sass-bem) [![Bower version](https://badge.fury.io/bo/sass-bem.svg)](http://badge.fury.io/bo/sass-bem) [![Gem Version](https://badge.fury.io/rb/sass-bem.svg)](http://badge.fury.io/rb/sass-bem)
 
 BEM Constructor is a Sass library for building immutable and namespaced BEM-style CSS objects.
 
