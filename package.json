@@ -1,7 +1,7 @@
 {
   "name": "sass-bem-utils",
   "author": "Alex Belov <asb@rdw.ru>",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "scripts": {
     "test": "grunt test"
   },
