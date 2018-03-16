@@ -1,7 +1,7 @@
 {
-    "name": "bem-constructor",
-    "version": "1.9.0",
-    "main": "dist/_bem-constructor.scss",
-    "author": "Daniel Guillan",
-    "ignore": ["*","!dist/_bem-constructor.scss"]
+    "name": "sass-bem",
+    "version": "1.11.0",
+    "main": "dist/_sass-bem-utils.scss",
+    "author": "Alexander Belov",
+    "ignore": ["*","!dist/_sass-bem-utils.scss"]
 }

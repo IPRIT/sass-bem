@@ -1,4 +1,4 @@
-// sass-bem-utils - version : 1.7.0 - 2018-02-07
+// sass-bem-utils - version : 1.11.0 - 2018-03-16
 // -----------------------------------------------------------------------------
 // Defaults
 // -----------------------------------------------------------------------------
@@ -563,10 +563,9 @@ $bem-block-namespaces: (
 @function _modifies-element($modified-elements...) {
 
     $inside-check: _should-be-called-within('block', 'modifier', 'state', 'theme');
-    $outside-check: _should-not-be-called-within('element');
 
     // Return false in case error throwing is disabled
-    @if $inside-check == false or $outside-check == false {
+    @if $inside-check == false {
         @return false;
     }
 
@@ -625,8 +624,11 @@ $bem-block-namespaces: (
     $selectors: append($selectors, unquote($element), 'comma');
   }
 
-  $modifier: map-get(map-get($_bem-current-context, 'modifier'), 'selector');
-  $selector: selector_append($modifier, $selectors);
+  $modifiers: map-get(map-get($_bem-current-context, 'modifier'), 'selector');
+  $selector: null;
+  @each $modifier in $modifiers {
+    $selector: selector_append($modifier, $selectors);
+  }
 
   $set-current: set-current-context('modifies-modifier', $modified-modifiers, $selector);
 
@@ -643,6 +645,53 @@ $bem-block-namespaces: (
   }
 
   $unset-current: unset-current-context('modifies-modifier');
+}
+
+// ----------------------------------------------------------------------
+// Modifies element's modifier
+// ----------------------------------------------------------------------
+
+/// Scopes the @content ruleset to an element of the block being modified
+/// @private
+/// @param {String} $context-element - Context element with modifier
+/// @param {String} $modified-element-modifier - Modifier that should be modified
+/// @returns The final selector for the element(s) modified by the modifier
+
+@function _modifies-element-modifier($context-element, $modified-element-modifier) {
+
+    $inside-check: _should-be-called-within('block', 'modifier', 'state', 'theme');
+
+    // Return false in case error throwing is disabled
+    @if $inside-check == false {
+        @return false;
+    }
+
+    $selectors: ();
+
+    $selector: map-get(map-get($_bem-current-context, 'block'), 'selector') + $bem-element-separator +
+        $context-element + $bem-modifier-separator + $modified-element-modifier;
+    $selectors: append($selectors, $selector, 'comma');
+
+    $s: &; // Workaround for libsass
+    $block: selector-append($s...);
+
+    $final-selector: selector-nest($block, $selectors);
+
+    $set-current: set-current-context('modifies-element-modifier', $selector, $final-selector);
+
+    @return $final-selector;
+}
+
+
+/// Scopes the @content ruleset to an element of the block being modified
+/// @param {String | Arglist} $modified-elements - Name of the element(s) that should be modified
+
+@mixin modifies-element-modifier($context-element, $modified-element-modifier) {
+    @at-root #{_modifies-element-modifier($context-element, $modified-element-modifier)} {
+        @content;
+    }
+
+    $unset-current: unset-current-context('modifies-element-modifier');
 }
 
 // ----------------------------------------------------------------------
