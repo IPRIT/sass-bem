@@ -24,8 +24,11 @@
     $selectors: append($selectors, unquote($element), 'comma');
   }
 
-  $modifier: map-get(map-get($_bem-current-context, 'modifier'), 'selector');
-  $selector: selector_append($modifier, $selectors);
+  $modifiers: map-get(map-get($_bem-current-context, 'modifier'), 'selector');
+  $selector: null;
+  @each $modifier in $modifiers {
+    $selector: selector_append($modifier, $selectors);
+  }
 
   $set-current: set-current-context('modifies-modifier', $modified-modifiers, $selector);
 

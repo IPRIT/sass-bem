@@ -1,18 +1,18 @@
-require './lib/bem-constructor'
+require './lib/sass-bem'
 
 Gem::Specification.new do |s|
   # Release Specific Information
-  s.version = BEMConstructor::VERSION
-  s.date = BEMConstructor::DATE
+  s.version = SassBem::VERSION
+  s.date = SassBem::DATE
 
   # Gem Details
-  s.name = "bem-constructor"
-  s.rubyforge_project = "bem-constructor"
+  s.name = "sass-bem"
+  s.rubyforge_project = "sass-bem"
   s.description = %q{A Sass library for building immutable and namespaced BEM-style CSS objects}
   s.summary = %q{BEM Constructor is a Sass library for building immutable and namespaced BEM-style CSS objects. By enforcing a consistent and programatic way of defining objects (blocks, elements and modifiers) it ensures a more structured, robust and secure object codebase that is easy to understand and maintain. Objects defined using the constructor are impossible to modify and reassign by mistake or omission.}
-  s.authors = ["Daniel Guillan"]
-  s.email = ["daniel.guillan@gmail.com"]
-  s.homepage = "https://github.com/danielguillan/bem-constructor"
+  s.authors = ["Alexander Belov"]
+  s.email = ["ipritoflex@yandex.ru"]
+  s.homepage = "https://github.com/IPRIT/sass-bem"
 
   # LICENSE file
   s.licenses = ['MIT']

@@ -58,16 +58,4 @@
             }
         }
     }
-
-
-    $_bem-current-context: () !global;
-
-    @include it("should return false or throw error if called within an element") {
-        @include block('block', 'object') {
-            @include element('element') {
-                @include should( expect( _modifies-element('element') ), to( be( false )));
-            }
-        }
-    }
-
 }

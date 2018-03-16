@@ -10,10 +10,9 @@
 @function _modifies-element($modified-elements...) {
 
     $inside-check: _should-be-called-within('block', 'modifier', 'state', 'theme');
-    $outside-check: _should-not-be-called-within('element');
 
     // Return false in case error throwing is disabled
-    @if $inside-check == false or $outside-check == false {
+    @if $inside-check == false {
         @return false;
     }
 

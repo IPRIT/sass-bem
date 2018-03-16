@@ -1,9 +1,50 @@
-@import "../../stylesheets/bem-constructor";
+@import "../../stylesheets/sass-bem";
 
-* {margin: 0 0 15px; }
-html { font-family: 'Helvetica Neue', Arial, sans-serif; }
-body { max-width: 500px; padding: 10%; }
-h1 { margin-bottom: 40px; }
-div { padding: 10px; }
+@include block('block', 'component') {
 
-@include bem-debug();
+  @include element('element') {
+    prop: 1;
+
+    @include modifier('local-modifier') {
+      prop: 2;
+
+      @include modifies-element('inner-element') {
+        prop: 5;
+      }
+
+      @include modifies-element-modifier('inner-element', 'inner-local-modifier') {
+        prop: 8;
+      }
+    }
+  }
+
+  @include element('inner-element') {
+    prop: 3;
+
+    @include modifier('inner-local-modifier') {
+      prop: 7;
+    }
+  }
+
+  @include modifier('another-global-modifier') {
+    prop: 9;
+  }
+
+  @include modifier('global-modifier') {
+    @include modifies-element('element') {
+      prop: 4;
+    }
+
+    @include modifies-element('inner-element', 'element') {
+      prop: 6;
+    }
+
+    @include modifies-element-modifier('inner-element', 'inner-local-modifier') {
+      prop: 8;
+    }
+
+    @include modifies-modifier('another-global-modifier') {
+      prop: 10;
+    }
+  }
+}

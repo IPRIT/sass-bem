@@ -37,6 +37,7 @@ module.exports = function(grunt) {
                     '<%= dir.src %>/_modifier.scss',
                     '<%= dir.src %>/_modifies-element.scss',
                     '<%= dir.src %>/_modifies-modifier.scss',
+                    '<%= dir.src %>/_modifies-element-modifier.scss',
                     '<%= dir.src %>/_get-block.scss',
                     '<%= dir.src %>/_get-element.scss',
                     '<%= dir.src %>/_get-modifier.scss',
@@ -54,11 +55,11 @@ module.exports = function(grunt) {
 
         bump: {
             options: {
-                files: ['package.json', 'bower.json', 'lib/bem-constructor.rb', 'dist/_bem-constructor.scss'],
+                files: ['package.json', 'bower.json', 'lib/sass-bem.rb', 'dist/_sass-bem-utils.scss'],
                 updateConfigs: [],
                 commit: true,
                 commitMessage: 'Bump version %VERSION%',
-                commitFiles: ['package.json', 'bower.json', 'lib/bem-constructor.rb', 'dist/_bem-constructor.scss'],
+                commitFiles: ['package.json', 'bower.json', 'lib/sass-bem.rb', 'dist/_sass-bem-utils.scss'],
                 createTag: true,
                 tagName: 'v%VERSION%',
                 tagMessage: 'Version %VERSION%',
@@ -66,7 +67,7 @@ module.exports = function(grunt) {
                 pushTo: 'upstream',
                 gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
                 prereleaseName: 'pre',
-                // Override default regExp to make it find in the version in lib/bem-constructor.rb
+                // Override default regExp to make it find in the version in lib/sass-bem.rb
                 regExp: new RegExp('([\'|\"]?[version][\'|\"]?[ ]*[:|=][ ]*[\'|\"]?)(\\d+\\.\\d+\\.\\d+(-\\.\\d+)?(-\\d+)?)[\\d||A-a|.|-]*([\'|\"]?)', 'i')
             }
         },

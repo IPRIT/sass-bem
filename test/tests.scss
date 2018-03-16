@@ -1,7 +1,7 @@
 $bem-throw-errors: false;
 
 @import "bootcamp";
-@import "../stylesheets/bem-constructor";
+@import "../stylesheets/sass-bem";
 
 @include runner-start;
 

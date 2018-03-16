@@ -1,4 +1,4 @@
-# BEM Constructor [![Build Status](https://travis-ci.org/danielguillan/bem-constructor.svg?branch=master)](https://travis-ci.org/danielguillan/bem-constructor) [![npm version](https://badge.fury.io/js/sass-bem-constructor.svg)](https://badge.fury.io/js/sass-bem-constructor) [![Bower version](https://badge.fury.io/bo/bem-constructor.svg)](http://badge.fury.io/bo/bem-constructor) [![Gem Version](https://badge.fury.io/rb/bem-constructor.svg)](http://badge.fury.io/rb/bem-constructor)
+# BEM Constructor [![Build Status](https://travis-ci.org/IPRIT/sass-bem.svg?branch=master)](https://travis-ci.org/IPRIT/sass-bem) [![npm version](https://badge.fury.io/js/sass-bem.svg)](https://badge.fury.io/js/sass-bem) [![Bower version](https://badge.fury.io/bo/sass-bem.svg)](http://badge.fury.io/bo/sass-bem) [![Gem Version](https://badge.fury.io/rb/sass-bem.svg)](http://badge.fury.io/rb/sass-bem)
 
 BEM Constructor is a Sass library for building immutable and namespaced BEM-style CSS objects.
 
@@ -44,31 +44,31 @@ There are 4 ways of installing BEM Constructor:
 
 ### Download
 
-Download [sass-bem.scss](/dist/_sass-bem.scss) and place it in your Sass directory.
+Download [sass-bem.scss](/dist/_sass-bem-utils.scss) and place it in your Sass directory.
 
 ### Bower
 
 Run the following command:
 
-    bower install --save-dev bem-constructor
+    bower install --save-dev sass-bem
 
 ### NPM
 
 Run the following command:
 
-    npm install sass-bem-constructor --save-dev
+    npm install sass-bem --save-dev
 
 
 ### Compass extension
 
-1. `gem install bem-constructor`
-2. Add `require 'bem-constructor'` to your `config.rb`
+1. `gem install sass-bem`
+2. Add `require 'sass-bem'` to your `config.rb`
 
 ## Usage
 
 Import it into your main stylesheet:
 
-    @import 'bem-constructor';
+    @import 'sass-bem';
 
 ### block($name, $type)
 
@@ -309,7 +309,7 @@ The compiled CSS:
 
 ## Visual debugger
 
-![BEM constructor visual debugger](https://raw.githubusercontent.com/danielguillan/bem-constructor/master/visual-debugger.png)
+![BEM constructor visual debugger](https://raw.githubusercontent.com/IPRIT/sass-bem/master/visual-debugger.png)
 
 Perform a visual healthcheck against your UI using the debugger mixin.
 
@@ -337,3 +337,5 @@ $bem-debug-styles: (
     'hacks'      : 5px solid #FF4136,
 );
 ```
+
+Extended version of [bem-constructor](https://github.com/danielguillan/bem-constructor) by danielguillan.
