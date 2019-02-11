@@ -1,7 +1,7 @@
 {
   "name": "sass-bem-utils",
   "author": "Alexander Belov <ipritoflex@yandex.com>",
-  "version": "1.14.0",
+  "version": "1.16.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/IPRIT/sass-bem"
