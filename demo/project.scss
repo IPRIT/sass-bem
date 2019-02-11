@@ -1,0 +1,57 @@
+@import "../dist/sass-bem-utils";
+
+$bem-use-namespaces: false;
+$bem-modifier-separator: '_';
+
+@include block('bem', 'component') {
+    background-color: red;
+    padding: 24px;
+
+    @include element('e') {
+        background-color: green;
+        padding: 24px;
+
+        @include modifier('m') {
+            background-color: purple;
+            color: white;
+        }
+    }
+
+    @include element('e2') {
+        background-color: firebrick;
+        padding: 24px;
+
+        @include modifier('m2') {
+            background-color: aqua;
+            color: black;
+
+            @include modifies-element-modifier('e', 'm') {
+                test: 2;
+            }
+
+            @include modifies-element('e2') {
+                test: 3;
+            }
+        }
+    }
+
+    @include modifier('m') {
+        background-color: rgba(red, .7);
+
+        @include modifies-modifier('m2') {
+            background-color: honeydew;
+        }
+
+        @include modifies-element('e') {
+            background-color: rgba(green, .4);
+        }
+
+        @include modifies-element-modifier('e', 'm') {
+            background-color: #FFDC00;
+        }
+    }
+
+    @include modifier('m2') {
+        background-color: #0074D9;
+    }
+}

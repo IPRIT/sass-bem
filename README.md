@@ -44,7 +44,7 @@ There are 4 ways of installing BEM Constructor:
 
 ### Download
 
-Download [sass-bem.scss](/dist/_sass-bem-utils.scss) and place it in your Sass directory.
+Download [sass-bem-utils.scss](/dist/_sass-bem-utils.scss) and place it in your Sass directory.
 
 ### Bower
 

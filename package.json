@@ -1,10 +1,7 @@
 {
   "name": "sass-bem-utils",
-  "author": "Alex Belov <asb@rdw.ru>",
-  "version": "1.12.0",
-  "scripts": {
-    "test": "grunt test"
-  },
+  "author": "Alexander Belov <ipritoflex@yandex.com>",
+  "version": "1.13.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/IPRIT/sass-bem"
@@ -14,12 +11,20 @@
     "url": "https://github.com/IPRIT/sass-bem/issues"
   },
   "homepage": "https://github.com/IPRIT/sass-bem",
+  "scripts": {
+    "compile": "node-sass-chokidar --output css demo",
+    "sass": "node-sass-chokidar --watch --output css --source-map true --source-map-contents --include-path node_modules --importer node_modules/node-sass-import demo",
+    "serve": "node server.js",
+    "start": "npm-run-all --parallel serve sass"
+  },
+  "dependencies": {
+    "node-sass-chokidar": "^1.3.4",
+    "node-sass-import": "^2.0.1",
+    "normalize-scss": "^7.0.1"
+  },
   "devDependencies": {
     "bootcamp": "^1.1.7",
-    "grunt": "^0.4.5",
-    "grunt-bump": "^0.7.0",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-sass": "^0.8.1",
-    "grunt-contrib-watch": "^0.6.1"
+    "live-server": "^1.2.0",
+    "npm-run-all": "^4.1.2"
   }
 }

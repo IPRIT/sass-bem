@@ -25,6 +25,7 @@
 
     $s: &; // Workaround for libsass
     $block: selector-append($s...);
+    $selectors: selector-append($selectors...);
 
     $selector: selector-nest($block, $selectors);
 

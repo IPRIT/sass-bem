@@ -431,9 +431,9 @@ $bem-block-namespaces: (
 // -----------------------------------------------------------------------------
 
 @mixin object($name) {
-  @include block($name, 'object') {
-    @content;
-  }
+    @include block($name, 'object') {
+        @content;
+    }
 }
 
 
@@ -442,9 +442,9 @@ $bem-block-namespaces: (
 // -----------------------------------------------------------------------------
 
 @mixin component($name) {
-  @include block($name, 'component') {
-    @content;
-  }
+    @include block($name, 'component') {
+        @content;
+    }
 }
 
 // ----------------------------------------------------------------------
@@ -573,11 +573,13 @@ $bem-block-namespaces: (
 
     @each $element in $modified-elements {
         $element: map-get(map-get($_bem-current-context, 'block'), 'selector') + $bem-element-separator + $element;
+
         $selectors: append($selectors, $element, 'comma');
     }
 
     $s: &; // Workaround for libsass
     $block: selector-append($s...);
+    $selectors: selector-append($selectors...);
 
     $selector: selector-nest($block, $selectors);
 
@@ -609,30 +611,30 @@ $bem-block-namespaces: (
 
 @function _modifies-modifier($modified-modifiers...) {
 
-  $inside-check: _should-be-called-within('block', 'modifier', 'state', 'theme');
-  $outside-check: _should-not-be-called-within('element');
+    $inside-check: _should-be-called-within('block', 'modifier', 'state', 'theme');
+    $outside-check: _should-not-be-called-within('element');
 
-  // Return false in case error throwing is disabled
-  @if $inside-check == false or $outside-check == false {
-    @return false;
-  }
+    // Return false in case error throwing is disabled
+    @if $inside-check == false or $outside-check == false {
+        @return false;
+    }
 
-  $selectors: ();
+    $selectors: ();
 
-  @each $element in $modified-modifiers {
-    $element: map-get(map-get($_bem-current-context, 'block'), 'selector') + $bem-modifier-separator + $element;
-    $selectors: append($selectors, unquote($element), 'comma');
-  }
+    @each $element in $modified-modifiers {
+        $element: map-get(map-get($_bem-current-context, 'block'), 'selector') + $bem-modifier-separator + $element;
+        $selectors: append($selectors, unquote($element), 'comma');
+    }
 
-  $modifiers: map-get(map-get($_bem-current-context, 'modifier'), 'selector');
-  $selector: null;
-  @each $modifier in $modifiers {
-    $selector: selector_append($modifier, $selectors);
-  }
+    $modifiers: map-get(map-get($_bem-current-context, 'modifier'), 'selector');
+    $selector: null;
+    @each $modifier in $modifiers {
+        $selector: selector_append($modifier, $selectors);
+    }
 
-  $set-current: set-current-context('modifies-modifier', $modified-modifiers, $selector);
+    $set-current: set-current-context('modifies-modifier', $modified-modifiers, $selector);
 
-  @return $selector;
+    @return $selector;
 }
 
 
@@ -640,11 +642,11 @@ $bem-block-namespaces: (
 /// @param {String | Arglist} $modified-modifiers - Name of the element(s) that should be modified
 
 @mixin modifies-modifier($modified-modifiers...) {
-  @at-root #{_modifies-modifier($modified-modifiers...)} {
-    @content;
-  }
+    @at-root #{_modifies-modifier($modified-modifiers...)} {
+        @content;
+    }
 
-  $unset-current: unset-current-context('modifies-modifier');
+    $unset-current: unset-current-context('modifies-modifier');
 }
 
 // ----------------------------------------------------------------------
@@ -674,6 +676,7 @@ $bem-block-namespaces: (
 
     $s: &; // Workaround for libsass
     $block: selector-append($s...);
+    $selectors: selector-append($selectors...);
 
     $final-selector: selector-nest($block, $selectors);
 
@@ -700,9 +703,9 @@ $bem-block-namespaces: (
 
 @function get-block() {
 
-  $block: map_get(map-get($_bem-current-context, 'block'), 'selector');
+    $block: map_get(map-get($_bem-current-context, 'block'), 'selector');
 
-  @return $block;
+    @return $block;
 }
 // ----------------------------------------------------------------------
 // Get element
@@ -710,13 +713,13 @@ $bem-block-namespaces: (
 
 @function get-element($element-name: false) {
 
-  @if not $element-name {
-    @return map_get(map-get($_bem-current-context, 'element'), 'selector');
-  }
+    @if not $element-name {
+        @return map_get(map-get($_bem-current-context, 'element'), 'selector');
+    }
 
-  $block: get-block();
+    $block: get-block();
 
-  @return $block + $bem-element-separator + $element-name;
+    @return $block + $bem-element-separator + $element-name;
 }
 // ----------------------------------------------------------------------
 // Get modifier
@@ -724,26 +727,26 @@ $bem-block-namespaces: (
 
 @function get-modifier($modifier-name: false, $element-name: false) {
 
-  @if not $modifier-name {
-    @return map_get(map-get($_bem-current-context, 'modifier'), 'selector');
-  } @else if (not $element-name) {
-    @return map_get(map-get($_bem-current-context, 'element'), 'selector') + $bem-modifier-separator + $modifier-name;
-  } @else {
-    $block: get-block();
-    @return $block + $bem-element-separator + $element-name + $bem-modifier-separator + $modifier-name;
-  }
+    @if not $modifier-name {
+        @return map_get(map-get($_bem-current-context, 'modifier'), 'selector');
+    } @else if (not $element-name) {
+        @return map_get(map-get($_bem-current-context, 'element'), 'selector') + $bem-modifier-separator + $modifier-name;
+    } @else {
+        $block: get-block();
+        @return $block + $bem-element-separator + $element-name + $bem-modifier-separator + $modifier-name;
+    }
 }
 // ----------------------------------------------------------------------
 // Get block modifier
 // ----------------------------------------------------------------------
 
 @function get-block-modifier($modifier-name: false) {
-  @if not $modifier-name {
-    @return map_get(map-get($_bem-current-context, 'modifier'), 'selector');
-  } @else {
-    $block: get-block();
-    @return $block + $bem-modifier-separator + $modifier-name;
-  }
+    @if not $modifier-name {
+        @return map_get(map-get($_bem-current-context, 'modifier'), 'selector');
+    } @else {
+        $block: get-block();
+        @return $block + $bem-modifier-separator + $modifier-name;
+    }
 }
 // -----------------------------------------------------------------------------
 // Scope constructor
@@ -824,7 +827,7 @@ $bem-theme-namespace: 't' !default;
 @mixin theme($themes...) {
 
     @at-root #{_theme($themes...)} {
-      @content;
+        @content;
     }
 
     $unset-current: unset-current-context('theme');
@@ -841,9 +844,9 @@ $bem-state-namespace: 'is' !default;
     $namespace: if($bem-use-namespaces, $bem-state-namespace + '-', '');
 
     @each $state in $states {
-      $ss: &; // Workaround for libsass
-      $s: selector-append($ss, '.#{$namespace}#{$state}');
-      $selector: append($selector, $s, 'comma');
+        $ss: &; // Workaround for libsass
+        $s: selector-append($ss, '.#{$namespace}#{$state}');
+        $selector: append($selector, $s, 'comma');
     }
 
     $set-current: set-current-context('state', $states, $selector);
@@ -854,7 +857,7 @@ $bem-state-namespace: 'is' !default;
 @mixin state($states...) {
 
     @at-root #{_state($states...)} {
-      @content;
+        @content;
     }
 
     $unset-state: unset-current-context('state');
@@ -956,7 +959,7 @@ $bem-debug-styles: (
 
     @if not not index($targets, 'classes') or $show_all {
         [class] {
-          outline: map-get($bem-debug-styles, 'classes');
+            outline: map-get($bem-debug-styles, 'classes');
         }
     }
 
@@ -966,7 +969,7 @@ $bem-debug-styles: (
 
     @if not not index($targets, 'elements') or $show_all {
         [class*="#{$bem-element-separator}"] {
-          outline: map-get($bem-debug-styles, 'elements');
+            outline: map-get($bem-debug-styles, 'elements');
         }
     }
 
@@ -976,7 +979,7 @@ $bem-debug-styles: (
 
     @if not not index($targets, 'modifiers') or $show_all {
         [class*="#{$bem-modifier-separator}"] {
-          outline: map-get($bem-debug-styles, 'modifiers');
+            outline: map-get($bem-debug-styles, 'modifiers');
         }
     }
 
@@ -988,7 +991,7 @@ $bem-debug-styles: (
         $c: map-get($bem-block-namespaces, 'object') + '-';
         [class^="#{$c}"],
         [class*=" #{$c}"] {
-          outline: map-get($bem-debug-styles, 'objects');
+            outline: map-get($bem-debug-styles, 'objects');
         }
     }
 
@@ -1000,7 +1003,7 @@ $bem-debug-styles: (
         $c: map-get($bem-block-namespaces, component) + '-';
         [class^="#{$c}"],
         [class*=" #{$c}"] {
-          outline: map-get($bem-debug-styles, 'components');
+            outline: map-get($bem-debug-styles, 'components');
         }
     }
 
@@ -1012,7 +1015,7 @@ $bem-debug-styles: (
         $c: map-get($bem-block-namespaces, utility) + '-';
         [class^="#{$c}"],
         [class*=" #{$c}"] {
-          outline: map-get($bem-debug-styles, 'utilities');
+            outline: map-get($bem-debug-styles, 'utilities');
         }
     }
 
@@ -1022,7 +1025,7 @@ $bem-debug-styles: (
 
     @if not not index($targets, 'hacks') or $show_all {
         [class^="#{$hack-namespace}"] {
-          outline: map-get($bem-debug-styles, 'hacks');
+            outline: map-get($bem-debug-styles, 'hacks');
         }
     }
 }
@@ -1092,7 +1095,7 @@ $bem-suffix-namespace: '\\@' !default;
 @mixin suffix($suffixes...) {
 
     @at-root #{_suffix($suffixes...)} {
-      @content;
+        @content;
     }
 
     $unset-suffix: unset-current-context('suffix');
